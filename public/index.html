@@ -1,0 +1,51 @@
+<!DOCTYPE>
+<html ng-app="myApp">
+<head>
+    <title>Artikel Liste</title>
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    </head>
+<body>
+<div class="container" ng-controller="AppCtrl">
+    <h1>Artikel Liste</h1>
+    
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Artikelname</th>
+                <th>Preis</th>
+                <th>Währung</th>
+                <th>Ort</th>
+            </tr>
+        
+        </thead>
+        <tbody>
+            <tr>
+                <td><input class="form-control" ng-model="article.name"></td>
+                <td><input class="form-control" ng-model="article.preis"></td>
+                <td><input class="form-control" ng-model="article.waehrung"></td>
+                <td><input class="form-control" ng-model="article.ort"></td>
+                <td><button class="btn btn-primary" ng-click="addArticle()">Hinzufügen</td>
+            
+            </tr>
+            <tr ng-repeat="article in articlelist">
+                <td>{{article.name}}</td>
+                <td>{{article.preis}}</td>
+                <td>{{article.waehrung}}</td>
+                <td>{{article.ort}}</td>
+            </tr>
+        </tbody>
+    
+    </table>
+    
+    
+</div>
+    
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    
+<script src="controller/controller.js"></script>
+</body>
+</html>
