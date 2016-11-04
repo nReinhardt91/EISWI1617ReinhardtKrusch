@@ -1,22 +1,21 @@
 var express = require('express');
-var app = express();
-var mongojs = require('mongojs');
 var bodyParser = require('body-parser');
-var db = require('mongodb').MongoClient, format = require('util').format;
 var mongoose = require('mongoose');
+var app = express();
 
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.json());
 
 app.use('/articlelist', function (req, res, next) {
-   
+
     console.log('Request Type:', req.method);
     next();
-    
+
 });
 
 /*********************************************
-Now using Mongoose. for quick overview : http://mongoosejs.com/docs/
+Now using Mongoose. for quick overview :
+http://mongoosejs.com/docs/
 http://blog.modulus.io/getting-started-with-mongoose/
 *********************************************/
 
@@ -26,7 +25,7 @@ db.on('error', console.error);
 db.once('open', function() {
   console.log("connected to Database.");
   // Create your schemas and models here.
-  var articleSchema = new mongoose.Schema({
+  var articleSchema = new mongoose.Schema({ //Schema für article-Collection
     name: String,
     preis: Number,
     waehrung: String,
@@ -48,16 +47,14 @@ db.once('open', function() {
   });
   app.post('/articlelist', function (req, res){
     console.log(req.body);
-    Articles.create(req.body, function(err, doc){
-        if(err){
-          return console.dir(err);
-        }else{
-          res.json(doc);
-        }
-      });
-    
+    Articles.create(req.body, function(err, doc){ // neuen Datensatz anlegen
+      if(err){
+        return console.dir(err);
+      }else{
+        res.json(doc);
+      }
+    });
   });
-
 });
 mongoose.connect("mongodb://test:test@ds139187.mlab.com:39187/eis_test");
 
