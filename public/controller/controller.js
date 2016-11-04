@@ -4,7 +4,7 @@ myApp.controller('AppCtrl',['$scope','$http',function($scope, $http){
 
   var refresh = function() {
     console.log("test1");
-    $http.get('http:/localhost:3000/articlelist').success(function(response) {
+    $http.get('/articlelist').success(function(response) {
       console.log("I got DATA");
       $scope.articlelist = response;
       $scope.article = "";
@@ -20,7 +20,7 @@ myApp.controller('AppCtrl',['$scope','$http',function($scope, $http){
         'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
       }
     }
-    $http.post('http:/localhost:3000/articlelist', $scope.article).success(function(response){
+    $http.post('/articlelist', $scope.article).success(function(response){
       console.log(response);
       refresh();
     });
