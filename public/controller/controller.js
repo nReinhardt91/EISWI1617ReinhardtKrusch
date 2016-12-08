@@ -21,8 +21,20 @@ myApp.controller('AppCtrl',['$scope','$http',function($scope, $http){
       }
     }
     $http.post('/articlelist', $scope.article).success(function(response){
-      console.log(response);
+      console.log($scope.article);
       refresh();
     });
+    
   };
+
+    $scope.remove = function(id) {
+        console.log(id);
+        $http.delete('/articlelist/' + id);
+        refresh();
+   };
+
+//    $scope.removeAll = function(){            Geht noch nicht.
+//        $http.delete('/articlelist/');
+//        refresh();
+//    }
 }]);
