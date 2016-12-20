@@ -95,10 +95,9 @@ db.once('open', function() {
     });
  });
     //Geht noch nicht
-//app.delete('/articlelist/', function(req, res){ 
-//   Articles.find({article: id}, function(err, result){
-//      Articles.remove(req.params.id); 
-//   }); 
+//app.delete('/articlelist', function(req, res){ 
+//    console.log(req.body);
+//   Articles.remove({ });
 //});
 });
 

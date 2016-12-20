@@ -33,8 +33,9 @@ myApp.controller('AppCtrl',['$scope','$http',function($scope, $http){
         refresh();
    };
 
-//    $scope.removeAll = function(){            Geht noch nicht.
-//        $http.delete('/articlelist/');
+//    $scope.removeAll = function(article){    
+//        console.log($scope.article);
+//        $http.delete('/articlelist');
 //        refresh();
 //    }
 }]);
